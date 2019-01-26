@@ -15,7 +15,7 @@ ofxTubePrimitive::ofxTubePrimitive(ofPolyline & poly, float radius) {
     setup(poly, radius);
 }
 
-ofxTubePrimitive::ofxTubePrimitive(vector<ofVec3f> & points, float radius) {
+ofxTubePrimitive::ofxTubePrimitive(vector<glm::vec3> & points, float radius) {
     init();
     setup(points, radius);
 }
@@ -37,7 +37,7 @@ void ofxTubePrimitive::setup(ofPolyline & poly, float radius) {
     tubeRadius.resize(tubePoly.size(), radius);
 }
 
-void ofxTubePrimitive::setup(vector<ofVec3f> & points, float radius) {
+void ofxTubePrimitive::setup(vector<glm::vec3> & points, float radius) {
     tubePoly.clear();
     tubePoly.addVertices(points);
     
@@ -45,7 +45,7 @@ void ofxTubePrimitive::setup(vector<ofVec3f> & points, float radius) {
     tubeRadius.resize(points.size(), radius);
 }
 
-void ofxTubePrimitive::addPoint(ofVec3f point, float radius) {
+void ofxTubePrimitive::addPoint(glm::vec3 point, float radius) {
     tubePoly.addVertex(point);
     tubeRadius.push_back(radius);
 }
@@ -87,7 +87,7 @@ void ofxTubePrimitive::update() {
     }
 
     //--------------------------------------------------------------------------
-    vector<ofVec3f> & verts = mesh->getVertices();
+    vector<glm::vec3> & verts = mesh->getVertices();
     int numOfVerts = verts.size();
     bool bLeftToRight;
     bool bRingEnd;
@@ -164,10 +164,10 @@ void ofxTubePrimitive::drawTubeRings() {
         ofNoFill();
         ofBeginShape();
         
-        vector<ofVec3f> & verts = mesh->getVertices();
+        vector<glm::vec3> & verts = mesh->getVertices();
         for(int j=0; j<tubeResolution; j++) {
             int k = i * tubeResolution + j;
-            ofVec3f & vert = verts[k];
+			glm::vec3 & vert = verts[k];
             ofVertex(vert);
         }
         

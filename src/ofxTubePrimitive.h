@@ -13,13 +13,13 @@ class ofxTubePrimitive : public of3dPrimitive {
 public:
     ofxTubePrimitive();
     ofxTubePrimitive(ofPolyline & poly, float radius);
-    ofxTubePrimitive(vector<ofVec3f> & points, float radius);
+    ofxTubePrimitive(vector<glm::vec3> & points, float radius);
     ~ofxTubePrimitive();
     
     void init();
     void setup(ofPolyline & poly, float radius);
-    void setup(vector<ofVec3f> & points, float radius);
-    void addPoint(ofVec3f point, float radius);
+    void setup(vector<glm::vec3> & points, float radius);
+    void addPoint(glm::vec3 point, float radius);
     void setResolution(int resolution);
     void update();
     
